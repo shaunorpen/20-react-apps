@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-import './App.css';
+// import './App.css';
+import 'tailwindcss/dist/tailwind.min.css';
 
 function padTime (time) {
   return time.toString().padStart(2, '0');
@@ -56,19 +57,19 @@ export default function App () {
   const seconds = padTime(timeLeft % 60);
 
   return (
-    <div className='app'>
-      <h2>{title}</h2>
+    <div className='bg-green-300 flex flex-col justify-center items-center h-screen'>
+      <h2 className='mb-8 text-4xl tracking-tight leading-10 text-gray-900'>{title}</h2>
 
-      <div className='timer'>
+      <div className='timer font-extrabold text-gray-900' style={{ fontSize: '15rem' }}>
         <span>{minutes}</span>
         <span>:</span>
         <span>{seconds}</span>
       </div>
 
-      <div className='buttons'>
-        {!isRunning && <button onClick={startTimer}>Start</button>}
-        {isRunning && <button onClick={stopTimer}>Stop</button>}
-        {showReset && <button onClick={resetTimer}>Reset</button>}
+      <div className='buttons mt-8'>
+        {!isRunning && <button className='px-8 py-3 border border-transparent leading-6 font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green' onClick={startTimer}>Start</button>}
+        {isRunning && <button className='px-8 py-3 border border-transparent leading-6 font-medium rounded-md text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red' onClick={stopTimer}>Stop</button>}
+        {showReset && <button className='ml-4 px-8 py-3 border border-transparent leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo' onClick={resetTimer}>Reset</button>}
       </div>
     </div>
   );
