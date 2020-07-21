@@ -94,9 +94,9 @@ body {
 .highlight {
   display: block;
   position: absolute;
-  height: 80px;
-  width: 300px;
-  top: -10px;
+  height: 160px;
+  width: 160px;
+  top: -60px;
   border-radius: 50%;
   pointer-events: none;
   background: radial-gradient(rgba(157, 128, 238, 1), rgba(157, 128, 238, 0));

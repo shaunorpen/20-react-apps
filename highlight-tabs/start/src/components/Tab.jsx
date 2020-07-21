@@ -7,7 +7,7 @@ function Tab({ children }) {
   });
 
   function moveHightlight(e) {
-    setHighlightStyle({ left: e.nativeEvent.layerX - 150 });
+    setHighlightStyle({ left: e.nativeEvent.layerX - 80 });
   }
 
   function hideHighlight(e) {

@@ -6,10 +6,10 @@ function padTime(time) {
 }
 
 const messages = [
+  `You can do this...just keep going!`,
   `Come on! You only just started!`,
   `I knew you'd give up...slacker!`,
-  `You can do this...just keep going!`,
-  `Yeah, probably about time to quit`,
+  `Yeah, probably about time to quit.`,
   `Maybe try again tomorrow?`,
 ];
 
