@@ -23,8 +23,11 @@ export default function App() {
       .then((res) => res.json())
       .then((data) => {
         const dataFromApi = data.results ?? data;
-        const resetImages = page === 1 ? true : false;
-        setImages((images) => dataFromApi);
+        if (page === 1) {
+          setImages(dataFromApi);
+        } else {
+          setImages([...images, ...dataFromApi]);
+        }
       })
       .catch(console.error);
   }
@@ -64,19 +67,19 @@ export default function App() {
         hasMore={true}
         loader={<h4>Loading...</h4>}
       >
-        <div className='image-grid'>
-          {images.map((image, index) => (
-            <a
-              className='image'
-              key={index}
-              href={image.links.html}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <img src={image.urls.regular} alt={image.alt_description} />
-            </a>
-          ))}
-        </div>
+      <div className='image-grid'>
+        {images.map((image, index) => (
+          <a
+            className='image'
+            key={index}
+            href={image.links.html}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <img src={image.urls.regular} alt={image.alt_description} />
+          </a>
+        ))}
+      </div>
       </InfiniteScroll>
     </div>
   );
