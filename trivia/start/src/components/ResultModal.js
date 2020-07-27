@@ -1,17 +1,15 @@
 import React from 'react';
 
-export default function ResultModal({
-  isCorrect,
-  correctAnswer,
-  getQuestion,
-}) {
+export default function ResultModal({ isCorrect, correctAnswer, getQuestion }) {
   return (
     <div className={`result-modal ${isCorrect ? 'is-correct' : 'is-wrong'}`}>
       <div className='overlay' />
       <div className='result-modal-content'>
         {isCorrect && (
           <h3>
-            👊👊👊
+            <span role='img' aria-label='Fistbump'>
+              👊👊👊
+            </span>
             <br />
             YOU WON!
           </h3>
@@ -19,7 +17,9 @@ export default function ResultModal({
 
         {!isCorrect && (
           <h3>
-            😟😢😟
+            <span role='img' aria-label='Sad faces'>
+              😟😢😟
+            </span>
             <br />
             YOU LOST!
           </h3>
@@ -33,7 +33,12 @@ export default function ResultModal({
           </div>
         )}
 
-        <button onClick={getQuestion}>Go to next question 👉</button>
+        <button onClick={getQuestion}>
+          Go to next question{' '}
+          <span role='img' aria-label='Finger pointing right'>
+            👉
+          </span>
+        </button>
       </div>
     </div>
   );

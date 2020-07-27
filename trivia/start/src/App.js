@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import useTrivia from './useTrivia';
 import Question from './components/Question';
 import CategorySelector from './components/CategorySelector';
@@ -39,13 +39,21 @@ export default function App() {
       {/* the question itself ----------------------- */}
       <div className='question-main'>
         {question && (
-          <Question question={question} answerQuestion={handleQuestionAnswered} />
+          <Question
+            question={question}
+            answerQuestion={handleQuestionAnswered}
+          />
         )}
       </div>
 
       {/* question footer ----------------------- */}
       <div className='question-footer'>
-        <button onClick={handleNextQuestion}>Go to next question 👉</button>
+        <button onClick={handleNextQuestion}>
+          Go to next question{' '}
+          <span role='img' aria-label='Finger pointing right'>
+            👉
+          </span>
+        </button>
       </div>
     </div>
   );
