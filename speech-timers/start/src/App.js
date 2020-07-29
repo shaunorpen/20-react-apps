@@ -3,12 +3,15 @@ import { useStopwatch } from 'react-timer-hook';
 import { useSpeechSynthesis } from 'react-speech-kit';
 import './App.css';
 
+import TimerSlot from './components/TimerSlot';
+
 export default function App() {
   const [timers, setTimers] = useState([
     { time: 2, text: 'this is my message' },
     { time: 5, text: 'hello' },
     { time: 8, text: 'whats up' },
   ]);
+
   const { seconds, isRunning, start, reset } = useStopwatch();
   const { speak, speaking, supported } = useSpeechSynthesis();
 
@@ -41,10 +44,10 @@ export default function App() {
   }
 
   return (
-    <div className="app">
+    <div className='app'>
       <h2>Talk the Talk</h2>
 
-      <div className="timers">
+      <div className='timers'>
         {/* timers go here */}
         {timers.map((timer, index) => (
           <TimerSlot
@@ -55,7 +58,7 @@ export default function App() {
           />
         ))}
 
-        <button className="add-button" onClick={addTimer}>
+        <button className='add-button' onClick={addTimer}>
           Add
         </button>
       </div>
@@ -64,15 +67,15 @@ export default function App() {
       <h2>{seconds}</h2>
 
       {/* buttons */}
-      <div className="buttons">
+      <div className='buttons'>
         {!isRunning && (
-          <button className="start-button" onClick={start}>
+          <button className='start-button' onClick={start}>
             Start
           </button>
         )}
 
         {isRunning && (
-          <button className="stop-button" onClick={reset}>
+          <button className='stop-button' onClick={reset}>
             Stop
           </button>
         )}
@@ -80,31 +83,5 @@ export default function App() {
         {speaking && <p>I am speaking...</p>}
       </div>
     </div>
-  );
-}
-
-function TimerSlot({ index, timer, updateTimers }) {
-  const [time, setTime] = useState(timer.time);
-  const [text, setText] = useState(timer.text);
-
-  function handleBlur() {
-    updateTimers(index, time, text);
-  }
-
-  return (
-    <form className="timer" key={index}>
-      <input
-        type="number"
-        value={time}
-        onChange={(e) => setTime(+e.target.value)}
-        onBlur={handleBlur}
-      />
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onBlur={handleBlur}
-      />
-    </form>
   );
 }
