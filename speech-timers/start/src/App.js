@@ -7,9 +7,13 @@ import TimerSlot from './components/TimerSlot';
 
 export default function App() {
   const [timers, setTimers] = useState([
-    { time: 2, text: 'this is my message' },
-    { time: 5, text: 'hello' },
-    { time: 8, text: 'whats up' },
+    { time: 2, text: 'hi folk' },
+    { time: 4, text: 'a new speech synthesis experiment here' },
+    {
+      time: 8,
+      text: "type what you'd like your browser to say",
+    },
+    { time: 12, text: 'then press "Start"' },
   ]);
 
   const { seconds, isRunning, start, reset } = useStopwatch();
