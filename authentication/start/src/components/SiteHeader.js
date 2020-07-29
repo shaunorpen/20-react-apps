@@ -18,7 +18,16 @@ export default function SiteHeader() {
         {isAuthenticated && user && (
           <>
             <button>{user.email}</button>
-            <button onClick={logout}>Logout</button>
+            <button
+              onClick={() =>
+                logout({
+                  returnTo:
+                    'https://shaunorpen-react-authentication.netlify.app/',
+                })
+              }
+            >
+              Logout
+            </button>
           </>
         )}
       </div>
